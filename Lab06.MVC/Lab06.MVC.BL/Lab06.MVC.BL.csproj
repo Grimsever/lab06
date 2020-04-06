@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lab06.MVC.Data\Lab06.MVC.Data.csproj" />
+    <ProjectReference Include="..\Lab06.MVC.Domain\Lab06.MVC.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,75 @@
+﻿@using Lab06.MVC.Domain
+@using Lab06.MVC.Domain.RepositoryModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+        
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Music Catalog</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css"/>
+    <link rel="stylesheet" href="~/css/own-style.css" asp-append-version="true"/>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
+        <ul class="container nav-bar" style="list-style: none; margin: auto;">
+            <li class="dropdown dp-style">
+                <a title="Main Page" class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="fab fa-soundcloud home-icon"></i>
+                    <i class="fa fa-angle-down" style="color: rgb(200, 196, 196)"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li>
+                            <a asp-controller="Catalogs" asp-action="Index">Catalogs</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Albums" asp-action="Index">Albums</a>
+                        </li>
+                        if (User.IsInRole("admin"))
+                        {
+                            <li>
+                                <a asp-controller="Admin" asp-action="Index">Users</a>
+                            </li>
+                        }
+                    }
+                    <li>
+                        <a asp-controller="Songs" asp-action="Index" title="Show songs list">Songs</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <p class="name-site">
+                    Music Catalog
+                </p>
+            </li>
+            <li class="collapse d-sm-inline-flex flex-sm-row-reverse">
+                <partial name="_LoginPartial"/>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2020 - Lab06.MVC Music Catalog
+    </div>
+</footer>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="https://kit.fontawesome.com/b1acd40d7a.js" crossorigin="anonymous"></script>
+@RenderSection("Scripts", false)
+</body>
+</html>

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Lab06.MVC.Domain.ViewModels.UserViewModel>
+
+@{
+    ViewData["Title"] = "Users List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table" aria-describedby="descrTable">
+    <caption>Users List</caption>
+    <thead>
+    <tr>
+        <th id="user-name">
+            Name
+        </th>
+        <th id="user-role">
+            Role
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoleName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

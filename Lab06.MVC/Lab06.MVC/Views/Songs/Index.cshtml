@@ -1,0 +1,73 @@
+﻿@using Lab06.MVC.Domain.RepositoryModel
+@using Microsoft.AspNetCore.Identity
+@model IEnumerable<Lab06.MVC.Domain.RepositoryModel.Song>
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@{
+    ViewData["Title"] = "Songs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (User.IsInRole("admin"))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
+
+<table class="table">
+    <caption>
+        Songs list
+    </caption>
+    <thead>
+    <tr>
+        <th id="song-gener">
+            @Html.DisplayNameFor(model => model.Genre)
+        </th>
+        <th id="song-artist">
+            @Html.DisplayNameFor(model => model.ArtistName)
+        </th>
+        <th id="song-release-date">
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </th>
+        <th id="album-name">
+            @Html.DisplayNameFor(model => model.Album)
+        </th>
+        <th id="song-name">
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <br/>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArtistName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Album.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            @if (User.IsInRole("admin"))
+            {
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            }
+        </tr>
+    }
+    </tbody>
+</table>

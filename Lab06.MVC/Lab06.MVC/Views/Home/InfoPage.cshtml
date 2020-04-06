@@ -1,0 +1,14 @@
+﻿@model Lab06.MVC.Domain.ViewModels.InformationViewModel
+@{
+    ViewData["Title"] = "InfoPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="jumbotron m-lg-3">
+    <h1>Something went wrong</h1>
+    @if (Model != null)
+    {
+        <p class="lead">@Model.Message</p>
+    }
+</div>

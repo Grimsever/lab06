@@ -1,0 +1,147 @@
+﻿
+.icon {
+    color: rgba(0, 0, 255, 0.651);
+    font-size: 30px
+}
+
+.home-icon {
+    color: rgb(236, 155, 236);
+    font-size: 50px;
+}
+
+#song-count {
+    text-align: center;
+}
+
+.name-site {
+    font-size: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    background: linear-gradient(45deg, #930a90 33%, #125dbc 66%, #8AA9D6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #0B2349;
+}
+
+.border_field {
+    border: 1px solid #ced4da;
+    padding: .375rem .75rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.dropdown-menu-song {
+    position: absolute;
+    padding: unset;
+    padding: 2px 2px 2px 2px;
+    width: min-content;
+    z-index: 1000;
+    display: none;
+    margin: auto;
+    font-size: 1rem;
+    color: #212529;
+    text-align: center;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+}
+
+
+
+.dropdown-menu {
+    text-align: center;
+}
+
+.dp-style {
+    text-align: center;
+}
+
+    .dp-style:hover > .dropdown-menu-song {
+        display: block;
+    }
+
+.dropdown-menu-song > li {
+    margin-top: 0;
+    float: right;
+    width: 100px;
+}
+
+.dp-style > a {
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 0;
+}
+
+.dp-style > ul {
+    float: left;
+}
+
+.dp-style > .dropdown-menu {
+    display: none;
+}
+
+.dp-style:hover > .dropdown-menu {
+    display: block;
+}
+
+.table-catalog td {
+    width: 30%;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    11.11% {
+        opacity: 1;
+    }
+
+    33.33% {
+        opacity: 1;
+    }
+
+    44.44% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+
+#slideshow {
+    position: relative;
+    width: 95%;
+    margin: auto;
+    margin-top: 2px;
+}
+
+
+    #slideshow img {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        animation-name: fade;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+    }
+
+
+        #slideshow img:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        #slideshow img:nth-child(2) {
+            animation-delay: 5s;
+        }
+
+        #slideshow img:nth-child(3) {
+            animation-delay: 10s;
+        }

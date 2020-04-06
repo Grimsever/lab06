@@ -1,0 +1,15 @@
+﻿@using Lab06.MVC.Domain.RepositoryModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div id="slideshow">
+    <div>
+        <img src="first.jpg" alt="First Image"/>
+        <img src="second.jpg" alt="Second Image"/>
+        <img src="third.jpg" alt="Third Image"/>
+    </div>
+</div>

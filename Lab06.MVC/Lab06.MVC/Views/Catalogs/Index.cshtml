@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Lab06.MVC.Domain.RepositoryModel.Catalog>
+
+@{
+    ViewData["Title"] = "User Catalogs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table thead-light table-catalog">
+    <caption>
+        Catalogs @User.Identity.Name.Split('@').First()
+    </caption>
+    <thead>
+    <tr>
+        <th id="owner-name">
+            Owner
+        </th>
+        <th id="catalog-name">
+            Catalog Name
+        </th>
+        <th id="catalog-song-count">
+            Songs Count
+        </th>
+        <br/>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CatalogSong.Count)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+            </td>
+            <td style="font-weight: bolder">
+                Song Name
+            </td>
+            <td style="font-weight: bolder">
+                Album Name
+            </td>
+        </tr>
+
+        @foreach (var song in item.CatalogSong)
+        {
+            <tr>
+                <td style="float: right">
+                    Song #@(++ViewBag.Number)
+                </td>
+                <td>
+                    @song.Song?.Name
+                </td>
+                <td>
+                    @song.Song?.Album?.Name
+                </td>
+                <td>
+                    <a asp-controller="Catalogs" asp-action="DeleteSong" asp-route-songId="@song.Song.Id" asp-route-catalogId="@item.Id">
+                        <i class="fa fa-trash-o icon" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="dropdown dp-style" style="text-align: right">
+                <a title="Add song to catalog">
+                    <i class="far fa-plus-square icon"></i>
+                </a>
+                <ul class="dropdown-menu-song">
+                    <li style="text-decoration: underline">Songs</li>
+                    @foreach (var song in ViewBag.Songs)
+                    {
+                        <li>
+                            <a asp-controller="Catalogs" asp-route-songId="@song.Id" asp-route-catalogId="@item.Id" asp-action="AddSong">@song.Name</a>
+                        </li>
+                    }
+                    <li style="text-decoration: underline">Albums</li>
+                    @foreach (var album in ViewBag.Albums)
+                    {
+                        <li>
+                            <a asp-controller="Catalogs" asp-action="AddAlbum" asp-route-catalogId="@item.Id" asp-route-albumId="@album.Id">@album.Name</a>
+                        </li>
+                    }
+                </ul>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

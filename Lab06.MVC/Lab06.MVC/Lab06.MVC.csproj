@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Views\Albums\**" />
+    <Compile Remove="Views\Songs\**" />
+    <Content Remove="Views\Albums\**" />
+    <Content Remove="Views\Songs\**" />
+    <EmbeddedResource Remove="Views\Albums\**" />
+    <EmbeddedResource Remove="Views\Songs\**" />
+    <None Remove="Views\Albums\**" />
+    <None Remove="Views\Songs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+    <None Include="Views\Albums\Create.cshtml" />
+    <None Include="Views\Albums\Delete.cshtml" />
+    <None Include="Views\Albums\Edit.cshtml" />
+    <None Include="Views\Albums\Index.cshtml" />
+    <None Include="Views\Songs\Create.cshtml" />
+    <None Include="Views\Songs\Delete.cshtml" />
+    <None Include="Views\Songs\Edit.cshtml" />
+    <None Include="Views\Songs\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lab06.MVC.BL\Lab06.MVC.BL.csproj" />
+    <ProjectReference Include="..\Lab06.MVC.Data\Lab06.MVC.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Content\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+
+
+
+</Project>

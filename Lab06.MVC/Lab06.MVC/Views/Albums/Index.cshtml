@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Lab06.MVC.Domain.RepositoryModel.Album>
+
+@{
+    ViewData["Title"] = "Albums";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table thead-light">
+    <caption>
+        Albums
+    </caption>
+    <thead>
+    <tr>
+        <th id="album-name">
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th id="song-count">
+            Songs count
+        </th>
+        <br/>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td style="text-align: center">
+                @Html.DisplayFor(modelItem => item.Songs.Count)
+            </td>
+            <td style="text-align: right">
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
